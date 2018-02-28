@@ -1,9 +1,12 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import UsersRoutes from './components/users/UsersRoutes';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Navbar from './components/utility/navbar';
+import PlaylistsRoutes from './components/playlists/PlaylistsRoutes';
 
 
 import 'bootstrap-css-only';
@@ -16,10 +19,16 @@ class App extends React.Component {
       <Router>
         <div className="container">
           <header>
-            <h1>Playlister</h1>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Navbar />
           </header>
+          <main>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <PlaylistsRoutes />
+              <UsersRoutes />
+            </Switch>
+          </main>
         </div>
       </Router>
     );

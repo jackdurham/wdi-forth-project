@@ -15,7 +15,7 @@ const LoginForm = ({ handleChange, handleSubmit, user }) => {
       </div>
       <div className="form-group">
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="Enter Your Password"
           onChange={handleChange}

@@ -25,7 +25,8 @@ class Login extends React.Component {
       .post('/api/login', this.state.user)
       .then(res => {
         Auth.setToken(res.data.token);
-        this.props.history.push('/');
+        const id = Auth.getPayload().userId;
+        this.props.history.push(`/users/${id}`);
       })
       .catch(err => console.log(err));
   }
