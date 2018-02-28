@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const playlistSchema = mongoose.Schema({
-  title: { type: String, required: true },
+  song: { type: String, required: true },
   artist: { type: String, required: true },
   album: { type: String, required: true }
 });

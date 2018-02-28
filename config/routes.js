@@ -6,6 +6,9 @@ const users = require('../controllers/user');
 router.route('/playlists')
   .get(playlists.index);
 
+// router.route('/playlists/:id')
+//   .get(playlists.show);
+
 router.route('/users/:id')
   .get(users.show);
 

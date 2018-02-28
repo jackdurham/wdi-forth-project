@@ -25,7 +25,8 @@
     "morgan": "^1.8.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-youtube": "^7.5.0"
   },
   "devDependencies": {
     "atob": "^2.0.3",
