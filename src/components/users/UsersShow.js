@@ -16,7 +16,8 @@ class UsersProfile extends Component {
   render() {
     return(
       <div>
-        <h3>Hi { this.state.user.username }</h3>
+        <h3>{ this.state.user.username }'s Profile</h3>
+        <img src={ this.state.user.image } />
       </div>
     );
   }
