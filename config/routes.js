@@ -9,11 +9,13 @@ router.route('/playlists')
   .post(secureRoute, playlists.create);
 
 router.route('/playlists/:id')
-  .get(playlists.show)
-  .delete(secureRoute, playlists.delete);
+  .get(playlists.show);
 
 router.route('/users/addTrack')
   .post(secureRoute, users.addTrack);
+
+router.route('/users/deleteTrack/:id')
+  .put(secureRoute, users.deleteTrack);
 
 router.route('/users/:id')
   .get(users.show);

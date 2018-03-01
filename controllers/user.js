@@ -27,7 +27,27 @@ function addTrack(req, res, next) {
     .catch(next);
 }
 
+function deleteTrack(req, res, next) {
+  console.log('in deleteTrack');
+  User
+    .findById(req.currentUser)
+    .exec()
+    .then(user => {
+      if(!user) return res.notFound();
+      // find the track you want to delete inside the tracks array and slice
+      // user.tracks.push(req.body.videoId);
+      user.tracks = user.tracks.filter(track => track !== req.params.id);
+      //{ validateBeforeSave: false }
+      return user.save();
+    })
+    .then(user => {
+      return res.json(user);
+    })
+    .catch(next);
+}
+
 module.exports = {
   show: usersShow,
-  addTrack: addTrack
+  addTrack: addTrack,
+  deleteTrack: deleteTrack
 };

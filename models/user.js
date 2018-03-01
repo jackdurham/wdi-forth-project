@@ -6,9 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   image: {type: String, required: true},
-  tracks: { type: Array },
-  following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true}],
-  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true}]
+  tracks: { type: Array }
 });
 
 userSchema.set('toJSON', {
@@ -28,7 +26,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && (!this._passwordConfirmation || this._passwordConfirmation !== this.password)) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();
