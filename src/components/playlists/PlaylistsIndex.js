@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 
 import Auth from '../../lib/Auth';
+import '../../scss/components/PlaylistsIndex.scss';
 
 class PlaylistsIndex extends React.Component {
   state = {
@@ -53,15 +54,15 @@ class PlaylistsIndex extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="image">
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="search music"
             onChange={this.handleChange}
           />
-
           <input type="submit" value="Search"/>
         </form>
+
         <div>
           { this.state.videos.map((video, i) =>
             <div key={i}>
@@ -69,7 +70,6 @@ class PlaylistsIndex extends React.Component {
               <button onClick={() => this.addToPlaylist(video)}>Add to your profile</button>
             </div>
           )}
-
         </div>
       </div>
     );
