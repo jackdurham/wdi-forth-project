@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const playlistSchema = mongoose.Schema({
-  song: { type: String, required: true },
-  artist: { type: String, required: true },
-  album: { type: String, required: true }
+  title: { type: String, required: true },
+  videoId: { type: String, required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
 playlistSchema.set('toJSON', {

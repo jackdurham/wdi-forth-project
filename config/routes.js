@@ -2,12 +2,18 @@ const router = require('express').Router();
 const auth  = require('../controllers/auth');
 const playlists = require('../controllers/playlists');
 const users = require('../controllers/user');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/playlists')
-  .get(playlists.index);
+  .get(playlists.index)
+  .post(secureRoute, playlists.create);
 
-// router.route('/playlists/:id')
-//   .get(playlists.show);
+router.route('/playlists/:id')
+  .get(playlists.show)
+  .delete(secureRoute, playlists.delete);
+
+router.route('/users/addTrack')
+  .post(secureRoute, users.addTrack);
 
 router.route('/users/:id')
   .get(users.show);
