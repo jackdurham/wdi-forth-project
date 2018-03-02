@@ -51,6 +51,10 @@ class PlaylistsIndex extends React.Component {
       .catch(err => console.log(err));
   }
 
+  handleClearSearchClick = () => {
+    this.setState( {videos: []});
+  }
+
 
   render() {
     return(
@@ -61,13 +65,14 @@ class PlaylistsIndex extends React.Component {
             onChange={this.handleChange}
           />
           <input type="submit" value="Search"/>
+          <input type="submit" value="Clear Search" onClick={this.handleClearSearchClick} />
         </form>
 
         <div>
           { this.state.videos.map((video, i) =>
             <div key={i}>
               <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.id.videoId}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
-              <button onClick={() => this.addToPlaylist(video)}>Add to your profile</button>
+              { Auth.isAuthenticated() && <button onClick={() => this.addToPlaylist(video)}>Add to your profile</button> }
             </div>
           )}
         </div>
