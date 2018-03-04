@@ -3,10 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
 
-// import 'font-awesome/css/font-awesome.css';
-{/* <i className="fas fa-headphones"></i> */}
-
-
 const Navbar = ({ history }) => {
   function logout(e) {
     e.preventDefault();
@@ -16,11 +12,20 @@ const Navbar = ({ history }) => {
 
   return(
     <nav className="navbar">
-      <Link to="/"><h1 className="title">Playlister</h1></Link>
-      { !Auth.isAuthenticated() && <Link to="/login" className="btn btn-secondary raised right">Login</Link> }
-      { !Auth.isAuthenticated() && <Link to="/register" className="btn btn-success raised">Register</Link> }
-      { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="btn btn-success raised right">Your Profile</Link> }
-      { Auth.isAuthenticated() && <a href="#" onClick={logout} className="btn btn-danger raised">Logout</a> }
+      <Link to="/"><h1 className="title">Playlister <i className="fas fa-music"></i></h1></Link>
+
+      <form className="searchusers input-group">
+        <input
+          className="form-control"
+          placeholder="search users"
+        />
+        <button className="btn btn-secondary">Search</button>
+      </form>
+
+      { !Auth.isAuthenticated() && <Link to="/login" className="btn btn-secondary right">Login</Link> }
+      { !Auth.isAuthenticated() && <Link to="/register" className="btn btn-success">Register</Link> }
+      { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="btn btn-success right">Your Profile</Link> }
+      { Auth.isAuthenticated() && <a href="#" onClick={logout} className="btn btn-danger">Logout</a> }
     </nav>
   );
 };

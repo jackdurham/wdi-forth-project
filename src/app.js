@@ -6,6 +6,7 @@ import Navbar from './components/utility/navbar';
 import Routes from './components/utility/routes';
 
 
+import 'font-awesome/css/font-awesome.css';
 import 'bootstrap-css-only';
 import './scss/style.scss';
 

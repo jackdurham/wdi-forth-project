@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-html {
-  // font-family: 'Quicksand', sans-serif;
+body {
+  font-family: 'Quicksand', sans-serif;
 }
 
 .navbar {
@@ -12,39 +12,6 @@ background: linear-gradient(to bottom, rgba(41,38,36,0.2), rgba(41,38,36,0.6));
 margin-left: 900px;
 }
 
-.btn-secondary.raised {
-	box-shadow: 0 3px 0 0 #35322F;
-}
-
-.btn-secondary.raised:active, .btn-secondary.raised.active {
-	background: #35322F;
-	box-shadow: none;
-	margin-bottom: -3px;
-	margin-top: 3px;
-}
-
-.btn-danger.raised {
-	box-shadow: 0 3px 0 0 #35322F;
-}
-
-.btn-danger.raised:active, .btn-danger.raised.active {
-	background: #35322F;
-	box-shadow: none;
-	margin-bottom: -3px;
-	margin-top: 3px;
-}
-
-.btn-success.raised {
-	box-shadow: 0 3px 0 0 #35322F;
-}
-
-.btn-success.raised:active, .btn-success.raised.active {
-	background: #35322F;
-	box-shadow: none;
-	margin-bottom: -3px;
-	margin-top: 3px;
-}
-
 .title {
   text-decoration: none;
 
@@ -53,4 +20,24 @@ margin-left: 900px;
     text-decoration: none;
     outline: none;
 }
+  }
+
+.searchusers {
+  margin-right: 780px;
+}
+
+iframe {
+  height: 500;
+  width: inherit;
+}
+
+h1 {
+  color: #D97818;
+  text-decoration: none;
+}
+
+img {
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
 }

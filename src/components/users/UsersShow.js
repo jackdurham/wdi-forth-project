@@ -26,15 +26,22 @@ class UsersProfile extends Component {
 
   render() {
     return(
-      <div>
-        <h3>{`${this.state.user.username}'s profile.`}</h3>
-        <img src={ this.state.user.image } />
-        { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
-          return(<div key={i}>
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
-            <button value={video} onClick={this.deleteSong}>Delete</button>
-          </div>);
-        })}
+      <div className="image2">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h3>{`${this.state.user.username}'s profile.`}</h3>
+              <img src={ this.state.user.image } />
+              {' '}
+              { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
+                return(<div className="col-md-6" key={i}>
+                  <iframe width="100" height="150" src={`https://www.youtube.com/embed/${video}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
+                  <button className="btn btn-secondary" value={video} onClick={this.deleteSong}>Delete</button>
+                </div>);
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

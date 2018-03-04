@@ -27,12 +27,22 @@ class PlaylistsIndex extends React.Component {
         }
       })
       .then(res => {
-
-        console.log(res);
-
         const videos = res.data.items;
-
         this.setState({ videos });
+
+        // const loadedArr = [];
+        //
+        // const iframes = document.getElementsByClassName('frame');
+        //
+        // setTimeout(() => {
+        //   console.log(iframes);
+        //   [].forEach.call(iframes, frame => {
+        //     frame.addEventListener('load', () => {
+        //       console.log('loaded');
+        //     });
+        //   });
+        // }, 500);
+        //
       });
 
   }
@@ -55,26 +65,34 @@ class PlaylistsIndex extends React.Component {
     this.setState( {videos: []});
   }
 
-
   render() {
     return(
       <div className="image">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="search music"
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Search"/>
-          <input type="submit" value="Clear Search" onClick={this.handleClearSearchClick} />
-        </form>
-
-        <div>
-          { this.state.videos.map((video, i) =>
-            <div key={i}>
-              <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.id.videoId}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
-              { Auth.isAuthenticated() && <button onClick={() => this.addToPlaylist(video)}>Add to your profile</button> }
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <form className="input-group mb-3" onSubmit={this.handleSubmit}>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search for music"
+                  onChange={this.handleChange}
+                />
+                <div className="input-group-append">
+                  <button className="btn btn-secondary" type="submit">Search</button>
+                </div>
+              </form>
+              <button onClick={this.handleClearSearchClick} className="btn btn-secondary">Clear Search</button>
             </div>
-          )}
+          </div>
+          <div className="row">
+            { this.state.videos.map((video, i) =>
+              <div className="col-md-6" key={i}>
+                <iframe width="100" height="150" className="frame" src={`https://www.youtube.com/embed/${video.id.videoId}?rel=0&amp;controls=0`}  frameBorder="0" allow="autoplay; encrypted-media"></iframe>
+                { Auth.isAuthenticated() && <button className="btn btn-secondary" onClick={() => this.addToPlaylist(video)}>Add to your profile</button> }
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
