@@ -71,7 +71,7 @@ class PlaylistsIndex extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <form className="input-group mb-3" onSubmit={this.handleSubmit}>
+              <form className="input-group mb-3 spacing" onSubmit={this.handleSubmit}>
                 <input
                   type="text"
                   className="form-control"

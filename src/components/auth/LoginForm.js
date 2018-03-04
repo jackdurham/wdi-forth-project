@@ -16,7 +16,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
                   placeholder="Enter Your Email Address"
                   onChange={handleChange}
                   value={user.email}
-                  className="form-control"
+                  className="form-control spacing"
                 />
                 { errors && <p>{errors.email}</p> }
               </div>

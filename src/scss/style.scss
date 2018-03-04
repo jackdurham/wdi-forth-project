@@ -9,11 +9,7 @@ background: linear-gradient(to bottom, rgba(41,38,36,0.2), rgba(41,38,36,0.6));
 }
 
 .right {
-margin-left: 900px;
-}
-
-a {
-  text-decoration: none;
+margin-left: 1000px;
 }
 
 .searchusers {
@@ -37,5 +33,9 @@ img {
 }
 
 .move {
-  margin-top: 20px;
+  // margin-bottom: 20px;
+}
+
+.spacing {
+  margin-top: 15px;
 }

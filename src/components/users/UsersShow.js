@@ -34,10 +34,11 @@ class UsersProfile extends Component {
               <img src={ this.state.user.image } />
               {' '}
               { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
-                return(<div className="col-md-6" key={i}>
-                  <iframe width="100" height="150" src={`https://www.youtube.com/embed/${video}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
-                  <button className="btn btn-secondary" value={video} onClick={this.deleteSong}>Delete</button>
-                </div>);
+                return(
+                  <div className="col-md-6" key={i}>
+                    <iframe width="100" height="150" src={`https://www.youtube.com/embed/${video}?rel=0&amp;controls=0`} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
+                    <button className="btn btn-secondary" value={video} onClick={this.deleteSong}>Delete</button>
+                  </div>);
               })}
             </div>
           </div>

@@ -18,7 +18,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors, handleImageUpl
                   placeholder="Email Address"
                   onChange={handleChange}
                   value={user.email}
-                  className="form-control"
+                  className="form-control spacing"
                 />
                 { errors && <p>{errors.email}</p> }
               </div>

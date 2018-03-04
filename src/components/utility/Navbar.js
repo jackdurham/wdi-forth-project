@@ -12,7 +12,7 @@ const Navbar = ({ history }) => {
 
   return(
     <nav className="navbar">
-      <Link to="/"><h1>Playlister <i className="fa-music"></i></h1></Link>
+      <Link to="/"><h1>Playlister <i className="fa fa-music"></i></h1></Link>
 
       <form className="searchusers input-group">
         <input
