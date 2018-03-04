@@ -64,6 +64,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors, handleImageUpl
                   className="btn btn-secondary"
                   onSuccess={handleImageUpload}
                 />
+                { <div>
+                  <h2 className="subtitle">Image Preview:</h2>
+                  <img src={user.image} className="img-responsive" />
+                </div> }
                 { errors && <p>{errors.image}</p> }
               </div>
 
