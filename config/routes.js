@@ -17,6 +17,9 @@ router.route('/users/addTrack')
 router.route('/users/deleteTrack/:id')
   .put(secureRoute, users.deleteTrack);
 
+router.route('/users')
+  .get(users.index);
+
 router.route('/users/:id')
   .get(users.show);
 

@@ -14,18 +14,14 @@ const Navbar = ({ history }) => {
     <nav className="navbar">
       <Link to="/"><h1>Playlister <i className="fa fa-music"></i></h1></Link>
 
-      <form className="searchusers input-group">
-        <input
-          className="form-control"
-          placeholder="search users"
-        />
-        <button className="btn btn-secondary">Search</button>
-      </form>
 
-      { !Auth.isAuthenticated() && <Link to="/login" className="btn btn-secondary right move">Login</Link> }
-      { !Auth.isAuthenticated() && <Link to="/register" className="btn btn-success move">Register</Link> }
-      { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="btn btn-success right move">Your Profile</Link> }
-      { Auth.isAuthenticated() && <a href="#" onClick={logout} className="btn btn-danger move">Logout</a> }
+      <form className="form-inline">
+        { !Auth.isAuthenticated() && <Link to="/login" className="btn btn-secondary navs ">Login</Link> }
+        { !Auth.isAuthenticated() && <Link to="/register" className="btn btn-success navs">Register</Link> }
+        { Auth.isAuthenticated() && <Link to="/users" className="btn btn-secondary navs">View Users</Link> }
+        { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="btn btn-secondary navs">Your Profile</Link> }
+        { Auth.isAuthenticated() && <a href="#" onClick={logout} className="btn btn-danger navs">Logout</a> }
+      </form>
     </nav>
   );
 };

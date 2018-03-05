@@ -5,7 +5,7 @@ import Auth from '../../lib/Auth';
 
 class UsersProfile extends Component {
   state = {
-    user: [],
+    user: {},
     videos: []
   }
 

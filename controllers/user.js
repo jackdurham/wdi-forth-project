@@ -11,6 +11,14 @@ function usersShow(req, res, next) {
     .catch(next);
 }
 
+function usersIndex(req, res, next) {
+  User
+    .find()
+    .exec()
+    .then(user => res.json(user))
+    .catch(next);
+}
+
 function addTrack(req, res, next) {
   User
     .findById(req.currentUser._id)
@@ -34,10 +42,7 @@ function deleteTrack(req, res, next) {
     .exec()
     .then(user => {
       if(!user) return res.notFound();
-      // find the track you want to delete inside the tracks array and slice
-      // user.tracks.push(req.body.videoId);
       user.tracks = user.tracks.filter(track => track !== req.params.id);
-      //{ validateBeforeSave: false }
       return user.save();
     })
     .then(user => {
@@ -48,6 +53,7 @@ function deleteTrack(req, res, next) {
 
 module.exports = {
   show: usersShow,
+  index: usersIndex,
   addTrack: addTrack,
   deleteTrack: deleteTrack
 };

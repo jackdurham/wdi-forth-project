@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
-  const formIsInvalid = Object.keys(errors).some(key => errors[key]);
+const LoginForm = ({ handleChange, handleSubmit, user, error }) => {
+  const formIsInvalid = !!error;
 
   return(
     <div className="image3">
@@ -18,7 +18,6 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
                   value={user.email}
                   className="form-control spacing"
                 />
-                { errors && <p>{errors.email}</p> }
               </div>
               <div className="form-group">
                 <input
@@ -29,7 +28,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
                   value={user.password}
                   className="form-control"
                 />
-                { errors && <p>{errors.password}</p> }
+                { error && <p>{error}</p> }
               </div>
               <button disabled={formIsInvalid} className="btn btn-secondary">Login</button>
             </form>
