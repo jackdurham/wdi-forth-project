@@ -32,6 +32,7 @@ class UsersProfile extends Component {
             <div className="col-md-12">
               <h3>{`${this.state.user.username}'s profile.`}</h3>
               <img src={ this.state.user.image } />
+              <button className="btn btn-secondary navs">Follow</button>
               {' '}
               { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
                 return(
