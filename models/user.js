@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: 'Please choose a password' },
   image: {type: String, required: 'Please add an image of yourself'},
   tracks: { type: Array },
-  following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true}]
+  following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true}],
+  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true}]
 });
 
 userSchema.set('toJSON', {
@@ -18,12 +19,6 @@ userSchema.set('toJSON', {
     delete json.__v;
     delete json.password;
   }
-});
-
-userSchema.virtual('followers', {
-  ref: 'User',
-  localField: '_id',
-  foreignField: 'following'
 });
 
 userSchema

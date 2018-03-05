@@ -8,8 +8,6 @@ class UsersIndex extends React.Component {
   };
 
   componentDidMount() {
-    // Axios request to get ALL users
-    // /api/users
     Axios
       .get('/api/users')
       .then(res => this.setState({ users: res.data }, () => console.log(this.state)))

@@ -3,7 +3,7 @@ const User = require('../models/user');
 function usersShow(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('followers')
+    .populate('followers following')
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
@@ -15,9 +15,32 @@ function usersShow(req, res, next) {
 function usersIndex(req, res, next) {
   User
     .find()
-    .populate('followers')
+    .populate('following followers')
     .exec()
     .then(user => res.json(user))
+    .catch(next);
+}
+
+function followRoute(req, res, next) {
+  const followerId = req.params.id;
+  const currentUserId = req.currentUser.id;
+
+  console.log(followerId, currentUserId);
+
+  User
+    .findById(currentUserId)
+    .exec()
+    .then(user => {
+      user.following.push(followerId);
+      user.save();
+
+      return User.findById(followerId).exec();
+    })
+    .then(user => {
+      user.followers.push(currentUserId);
+      user.save();
+      return res.status(200).json(user);
+    })
     .catch(next);
 }
 
@@ -56,6 +79,7 @@ function deleteTrack(req, res, next) {
 module.exports = {
   show: usersShow,
   index: usersIndex,
+  follow: followRoute,
   addTrack: addTrack,
   deleteTrack: deleteTrack
 };

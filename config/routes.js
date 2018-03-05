@@ -23,6 +23,9 @@ router.route('/users')
 router.route('/users/:id')
   .get(users.show);
 
+router.route('/users/follow/:id')
+  .get(secureRoute, users.follow);
+
 router.route('/register')
   .post(auth.register);
 

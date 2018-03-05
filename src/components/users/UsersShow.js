@@ -24,6 +24,15 @@ class UsersProfile extends Component {
       .catch(err => console.log(err));
   }
 
+  followUser = () => {
+    Axios
+      .get(`/api//users/follow/${this.state.user.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
+      .then(res => {
+        const user = Object.assign({}, this.state.user, { followers: res.data.followers });
+        this.setState({ user });
+      });
+  }
+
   render() {
     return(
       <div className="image2">
@@ -31,9 +40,11 @@ class UsersProfile extends Component {
           <div className="row">
             <div className="col-md-12">
               <h3>{`${this.state.user.username}'s profile.`}</h3>
+              { this.state.user.username && <p><span>Following: { this.state.user.following.length}</span> | <span>Followers: { this.state.user.followers.length}</span></p> }
               <img src={ this.state.user.image } />
-              
-              <button className="btn btn-secondary navs">Follow</button>
+
+
+              { this.state.user.username && this.state.user.followers.includes(Auth.getPayload().userId) && <button onClick={this.followUser} className="btn btn-secondary navs">Follow</button>}
               {' '}
               { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
                 return(
