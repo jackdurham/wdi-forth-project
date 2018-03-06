@@ -3,6 +3,8 @@ import Axios from 'axios';
 
 import Auth from '../../lib/Auth';
 
+import Modal from '../utility/Modal';
+
 class UsersProfile extends Component {
   state = {
     user: {},
@@ -40,10 +42,8 @@ class UsersProfile extends Component {
           <div className="row">
             <div className="col-md-12">
               <h3>{`${this.state.user.username}'s profile.`}</h3>
-              { this.state.user.username && <p><span>Following: { this.state.user.following.length}</span> | <span>Followers: { this.state.user.followers.length}</span></p> }
+              { this.state.user.username && <Modal user={this.state.user}/> }
               <img src={ this.state.user.image } />
-
-
               { this.state.user.username && this.state.user.followers.includes(Auth.getPayload().userId) && <button onClick={this.followUser} className="btn btn-secondary navs">Follow</button>}
               {' '}
               { this.state.user.tracks && this.state.user.tracks.map((video, i) => {

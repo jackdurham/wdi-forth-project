@@ -26,10 +26,13 @@
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-filestack": "^0.9.7",
     "react-router-dom": "^4.2.2",
-    "react-youtube": "^7.5.0"
+    "react-youtube": "^7.5.0",
+    "reactjs-popup": "^1.0.3",
+    "save": "^2.3.2"
   },
   "devDependencies": {
     "atob": "^2.0.3",
