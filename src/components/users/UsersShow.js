@@ -31,7 +31,7 @@ class UsersProfile extends Component {
       .get(`/api//users/follow/${this.state.user.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
       .then(res => {
         const user = Object.assign({}, this.state.user, { followers: res.data.followers });
-        this.setState({ user });
+        this.setState({ user }, () => console.log(this.state));
       });
   }
 
@@ -44,7 +44,7 @@ class UsersProfile extends Component {
               <h3>{`${this.state.user.username}'s profile.`}</h3>
               { this.state.user.username && <Modal user={this.state.user}/> }
               <img src={ this.state.user.image } />
-              { this.state.user.username && this.state.user.followers.includes(Auth.getPayload().userId) && <button onClick={this.followUser} className="btn btn-secondary navs">Follow</button>}
+              { this.state.user.username && this.state.user.followers.every(follower => follower.id !== Auth.getPayload().userId) && <button onClick={this.followUser} className="btn btn-secondary navs">Follow</button>}
               {' '}
               { this.state.user.tracks && this.state.user.tracks.map((video, i) => {
                 return(

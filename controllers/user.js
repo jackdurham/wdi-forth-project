@@ -34,7 +34,7 @@ function followRoute(req, res, next) {
       user.following.push(followerId);
       user.save();
 
-      return User.findById(followerId).exec();
+      return User.findById(followerId).populate('followers').exec();
     })
     .then(user => {
       user.followers.push(currentUserId);
