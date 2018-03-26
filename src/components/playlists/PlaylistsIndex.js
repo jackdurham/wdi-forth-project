@@ -30,19 +30,6 @@ class PlaylistsIndex extends React.Component {
         const videos = res.data.items;
         this.setState({ videos });
 
-        // const loadedArr = [];
-        //
-        // const iframes = document.getElementsByClassName('frame');
-        //
-        // setTimeout(() => {
-        //   console.log(iframes);
-        //   [].forEach.call(iframes, frame => {
-        //     frame.addEventListener('load', () => {
-        //       console.log('loaded');
-        //     });
-        //   });
-        // }, 500);
-        //
       });
 
   }
