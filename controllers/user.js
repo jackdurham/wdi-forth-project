@@ -25,7 +25,6 @@ function followRoute(req, res, next) {
   const followerId = req.params.id;
   const currentUserId = req.currentUser.id;
 
-  console.log(followerId, currentUserId);
 
   User
     .findById(currentUserId)
