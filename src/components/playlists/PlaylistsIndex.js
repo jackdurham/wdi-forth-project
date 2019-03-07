@@ -20,7 +20,7 @@ class PlaylistsIndex extends React.Component {
         params: {
           q: this.state.query,
           part: 'snippet',
-          maxResults: 10,
+          maxResults: 20,
           videoCategoryId: 10,
           key: 'AIzaSyCVcsZcjTbXh1VC5u4ZJpUoznoTFgNg3AI',
           type: 'video'
